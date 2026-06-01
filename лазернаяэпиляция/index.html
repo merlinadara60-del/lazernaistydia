@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>HairOff — студия лазерной эпиляции и LPG массажа | Чебоксары, Новочебоксарск</title>
+    <meta name="description" content="Студия лазерной эпиляции и LPG массажа HairOff в Чебоксарах и Новочебоксарске. Диодный лазер Profbeauty, безболезненно, результат с первого сеанса. Акции, скидки, запись онлайн.">
+    <meta name="keywords" content="лазерная эпиляция, Чебоксары, Новочебоксарск, LPG массаж, эпиляция диодным лазером, косметология, HairOff">
+    <meta property="og:title" content="HairOff — студия лазерной эпиляции и LPG массажа">
+    <meta property="og:description" content="Гладкая кожа без боли и вросших волос. Современное оборудование, опытные мастера. Запишитесь онлайн!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hairoff.ru/">
+    
+    <!-- Единые шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_API_ключ&lang=ru_RU" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ---------- БАЗОВЫЕ СТИЛИ ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #2C2C2C;
+            line-height: 1.5;
+        }
+        h1, h2, h3, h4, .logo, .footer-logo, .master-info h4, .review-author strong, .hit-card h3, .price-category {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        h1, h2 {
+            font-weight: 500;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .work-time-header {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #378C7F;
+            margin-bottom: 2rem;
+            background: rgba(55,140,127,0.08);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* ---------- НАВИГАЦИЯ (фиксированная, с изменением фона) ---------- */
+        .navbar {
+            background: linear-gradient(135deg, rgba(214, 222, 231, 0.92), rgba(194, 204, 216, 0.92), rgba(214, 222, 231, 0.92));
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 0.9rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: #FFFFFF;
+            backdrop-filter: none;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-bottom-color: rgba(212, 175, 55, 0.6);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #152826;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            transition: color 0.2s;
+            z-index: 102;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.3);
+        }
+        .logo:hover {
+            color: #378C7F;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 103;
+        }
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #1e2b29;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .nav-toggle {
+            display: none;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            list-style: none;
+            align-items: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a3a36;
+            transition: 0.2s;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover {
+            color: #266b60;
+            border-bottom-color: #D4AF37;
+        }
+        @media (max-width: 800px) {
+            .navbar {
+                padding: 0.8rem 1.5rem;
+                background: linear-gradient(135deg, rgba(214, 222, 231, 0.96), rgba(194, 204, 216, 0.96));
+                backdrop-filter: blur(16px);
+            }
+            .navbar.scrolled {
+                background: #FFFFFF;
+                backdrop-filter: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                min-height: 100vh;
+                /* вместо фиксированной высоты 100vh делаем min-height, чтобы при необходимости меню занимало больше экрана с прокруткой */
+                max-height: 100vh;
+                overflow-y: auto;
+                background: linear-gradient(135deg, rgba(214, 222, 231, 0.98), rgba(194, 204, 216, 0.98));
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transform: translateX(100%);
+                opacity: 0;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                z-index: 101;
+                pointer-events: none;
+                padding: 5rem 2rem;
+            }
+            .navbar.scrolled .nav-links {
+                background: #FFFFFF;
+                backdrop-filter: none;
+            }
+            .nav-links a {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: #152826;
+                border-bottom: none;
+                padding: 0.5rem;
+            }
+            .nav-links a:hover {
+                color: #378C7F;
+                transform: scale(1.05);
+            }
+            .nav-toggle:checked ~ .nav-links {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: translateY(8.5px) rotate(45deg);
+            }
+            .nav-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            .nav-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: translateY(-8.5px) rotate(-45deg);
+            }
+            body:has(.nav-toggle:checked) {
+                overflow: hidden;
+            }
+        }
+
+        /* ---------- ГЕРОЙ-БЛОК ---------- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 4rem 2rem 4rem;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #d6dee7 0%, #c2ccd8 50%, #d6dee7 100%);
+        }
+        .hero-container {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            border: 2px solid #D4AF37;
+            border-radius: 2px;
+            padding: 0 0 2rem 2rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(2px);
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
+            transition: box-shadow 0.2s ease;
+            margin: 0 auto;
+            position: relative;
+        }
+        .hero-container:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7), 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+        .hero-content {
+            flex: 1 1 auto;
+            color: #1e2b29;
+            max-width: 550px;
+            margin-top: 0;
+            margin-right: -2rem;
+            position: relative;
+            z-index: 2;
+            background: transparent;
+            padding: 1rem 1rem 1rem 0;
+            text-align: left;
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 0.9rem;
+            font-size: 1.2rem;
+            justify-content: flex-start;
+        }
+        .stars {
+            color: #E6B422;
+            letter-spacing: 2px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #152826;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+        .no-wrap {
+            white-space: nowrap;
+        }
+        .no-wrap-second {
+            white-space: nowrap;
+        }
+        .subhead {
+            font-size: 1rem;
+            margin-bottom: 1.8rem;
+            color: #1f3c39;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .result-highlight {
+            white-space: normal;
+        }
+        .benefits {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            justify-content: flex-start;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            padding: 0.7rem 1.4rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a3a36;
+            transition: transform 0.1s ease, background 0.2s;
+            width: auto;
+            white-space: nowrap;
+        }
+        .benefit-item i {
+            color: #2c7a6b;
+            font-size: 1.2rem;
+        }
+        .benefit-item:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #378C7F;
+            color: white;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 0.5rem;
+        }
+        .btn-primary:hover {
+            background: #266b60;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            margin-top: 0;
+            margin-right: 0;
+            z-index: 1;
+        }
+        .image-wrapper {
+            overflow: hidden;
+            max-height: 78vh;
+        }
+        .hero-image img {
+            max-height: 85vh;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 10px 24px rgba(0,0,0,0.1));
+        }
+        @media (max-width: 1000px) and (min-width: 901px) {
+            .hero-content h1 { font-size: 3rem; }
+        }
+        /* Мобильная версия: заголовок как h2 (2rem) */
+        @media (max-width: 900px) {
+            .hero { padding: 5rem 1rem 1rem 1rem; }
+            .hero-container {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem;
+                gap: 1rem;
+                max-width: 100%;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            .hero-content {
+                margin-top: 0;
+                margin-right: 0;
+                max-width: 100%;
+                padding: 0;
+                text-align: center;
+            }
+            .hero-image {
+                justify-content: center;
+                margin-top: 0;
+            }
+            .image-wrapper {
+                max-height: none;
+                overflow: visible;
+            }
+            .hero-image img {
+                max-height: 45vh;
+            }
+            .benefits {
+                justify-content: center;
+            }
+            .benefit-item {
+                white-space: normal;
+                text-align: center;
+            }
+            .btn-primary { 
+                margin: 0.5rem auto 0 auto;
+                display: inline-block;
+            }
+            .subhead { 
+                font-size: 1rem; 
+            }
+            .rating {
+                margin-top: 0;
+                margin-bottom: 0.85rem;
+                justify-content: center;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+                margin-bottom: 0.25rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.7rem;
+            }
+        }
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Остальные стили (услуги, прайс, команда и т.д.) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+        }
+        .service-card {
+            background-size: cover;
+            background-position: center;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+        .service-card .service-label {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            width: 100%;
+            padding: 0.6rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            backdrop-filter: blur(4px);
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .price-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .tab-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+        .tab-btn.active {
+            background: #378C7F;
+            color: white;
+        }
+        .price-content { display: none; }
+        .price-content.active { display: block; }
+        .price-card {
+            background: #fff;
+            border: 1px solid #eaeef2;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .price-category {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            color: #378C7F;
+            border-bottom: 1px solid #eaeef2;
+            padding-bottom: 0.3rem;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            gap: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .price-item span:last-child {
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .price-item.description-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.2rem;
+        }
+        .price-item.description-item span:last-child {
+            white-space: normal;
+            flex-shrink: 1;
+            word-break: break-word;
+        }
+        @media (max-width: 768px) {
+            .price-item.description-item {
+                gap: 0.3rem;
+            }
+        }
+        .price-grid-2cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .price-table-wrapper { overflow-x: auto; }
+        .price-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            font-family: 'Inter', sans-serif;
+        }
+        .price-table th {
+            background: #f9f9f9;
+            color: #378C7F;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .price-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+        .price-table th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+        .price-table th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+        @media (max-width: 768px) {
+            .price-table-wrapper {
+                overflow-x: visible;
+            }
+            .price-table thead {
+                display: none;
+            }
+            .price-table, .price-table tbody, .price-table tr, .price-table td {
+                display: block;
+                width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .price-table tr {
+                margin-bottom: 1.5rem;
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            }
+            .price-table td {
+                border: none;
+                padding: 0.6rem 1rem;
+                text-align: right;
+                position: relative;
+                white-space: nowrap;
+            }
+            .price-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 600;
+                color: #378C7F;
+                white-space: nowrap;
+            }
+            .price-table td:first-child {
+                background: #f1f9f7;
+                font-weight: 700;
+                text-align: center;
+                color: #2C2C2C;
+                font-size: 1rem;
+                border-radius: 12px 12px 0 0;
+            }
+            .price-table td:first-child::before {
+                content: none;
+            }
+        }
+        .complex-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .booking-wrapper {
+            background: #F8F9FA;
+            padding: 2rem;
+        }
+        .booking-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .booking-form { flex: 1.5; min-width: 260px; }
+        .contacts-card {
+            flex: 1;
+            background: white;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .form-row { margin-bottom: 1.2rem; }
+        .form-row label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-row input, .form-row select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #ddd;
+            font-family: 'Inter', sans-serif;
+            border-radius: 8px;
+        }
+        .form-row select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a0a0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-row select:hover {
+            border-color: #378C7F;
+        }
+        .form-row select:focus {
+            outline: none;
+            border-color: #378C7F;
+            box-shadow: 0 0 0 3px rgba(55,140,127,0.1);
+        }
+        .datetime-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .datetime-row .form-row { flex: 1; }
+        .flatpickr-input { background: white; cursor: pointer; }
+        .contact-detail {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-detail i { width: 28px; color: #378C7F; }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .social-links a {
+            background: #378C7F;
+            color: white;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .two-maps-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .map-card {
+            flex: 1 1 calc(50% - 2rem);
+            min-width: 280px;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .map-card h3 {
+            background: #378C7F;
+            color: white;
+            padding: 0.8rem 1rem;
+            font-size: 1.2rem;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .map-wrapper {
+            width: 100%;
+            height: 280px;
+            background: #e9ecef;
+        }
+        .map-address {
+            padding: 0.8rem 1rem;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .booking-grid { flex-direction: column; }
+            .price-grid-2cols { grid-template-columns: 1fr; }
+            .two-maps-container { flex-direction: column; }
+            .map-card { flex: 1 1 100%; }
+            .complex-grid {
+                display: flex;
+                flex-direction: column;
+            }
+            .floating-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            .form-row select {
+                background-position: right 12px center;
+                padding-right: 32px;
+                font-size: 14px;
+            }
+            .flatpickr-input {
+                font-size: 14px;
+                padding: 0.8rem 1rem;
+            }
+            .datetime-row .form-row input {
+                font-size: 14px;
+            }
+            .form-row input {
+                font-size: 14px;
+            }
+        }
+        .fade-up { opacity: 0; transform: translateY(30px); transition: 0.6s; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+        .new-footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 2rem 5% 1.5rem;
+            text-align: left;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            color: #aaa;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-nav a:hover {
+            color: #378C7F;
+        }
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: #888;
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                text-align: center;
+            }
+            .footer-nav {
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #378C7F;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 999;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .team {
+            --accent: #378C7F;
+            --accent-light: #6bafa0;
+            --bg: #ffffff;
+            --bg-alt: #f7f9f8;
+            --card: #ffffff;
+            --text: #2d2a26;
+            --text-2: #6b625c;
+            --text-3: #9c9189;
+            --border: #eef2f6;
+            --shadow: 0 8px 24px rgba(0,0,0,0.04);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
+            --r: 20px;
+            background: var(--bg);
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .team .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        .team .section-head {
+            margin-bottom: 56px;
+            text-align: center;
+        }
+        .team .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .team .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+        .team .section-head h2 em {
+            font-style: italic;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+        .master-card {
+            background: var(--card);
+            border-radius: var(--r);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .master-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+            border-color: var(--accent-light);
+        }
+        .master-img {
+            position: relative;
+            overflow: hidden;
+            height: 290px;
+            background-color: #efe3db;
+        }
+        .master-img .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center 20%;
+            transition: transform 0.5s ease-out;
+        }
+        .master-card:hover .master-img .img-placeholder {
+            transform: scale(1.05);
+        }
+        .master-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 15%, rgba(45,42,38,0.92) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px 20px;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .master-card:hover .master-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .master-bio {
+            font-size: 13px;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-sm {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: #ffffff;
+            color: var(--accent);
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 0.4px;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-sm:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(55,140,127,0.3);
+        }
+        .master-info {
+            padding: 22px 20px 24px;
+            flex: 1;
+        }
+        .master-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+        .master-role {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+        .master-exp {
+            font-size: 12px;
+            color: var(--text-3);
+            margin-bottom: 14px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+        .master-spec {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .master-spec span {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 14px;
+            background: var(--bg-alt);
+            border-radius: 100px;
+            color: var(--text-2);
+            letter-spacing: -0.2px;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 1100px) {
+            .team-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        }
+        @media (max-width: 860px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 540px) {
+            .team-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+            .master-img { height: 280px; }
+        }
+        
+        .reviews-section {
+            --accent: #378C7F;
+            --accent-light: #6bafa0;
+            --bg: #ffffff;
+            --bg-alt: #f7f9f8;
+            --card: #ffffff;
+            --text: #2C2C2C;
+            --text-2: #555;
+            --text-3: #888;
+            --border: #eef2f6;
+            --shadow: 0 8px 24px rgba(0,0,0,0.04);
+            --r: 20px;
+            padding: 4rem 0;
+            background: var(--bg);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .reviews-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        .reviews-section .section-head {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .reviews-section .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .reviews-section .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+        .reviews-section .section-head h2 em {
+            font-style: italic;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+        .reviews-two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .reviews-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .review-card {
+            background: var(--card);
+            border-radius: var(--r);
+            padding: 32px 28px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .review-card:hover {
+            box-shadow: var(--shadow);
+            border-color: transparent;
+            transform: translateX(4px);
+        }
+        .review-stars {
+            color: #f5b342;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .review-text {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.4;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+        }
+        .review-author strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text);
+            font-family: 'Playfair Display', serif;
+        }
+        .review-author span {
+            font-size: 11px;
+            color: var(--text-3);
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 860px) {
+            .reviews-two-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        .studio-info {
+            background: #ffffff;
+            border-radius: 0;
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .studio-info .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        .studio-info .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: #2C2C2C;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .accent-text {
+            color: #378C7F;
+        }
+        .info-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .studio-text p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #6b625c;
+            margin-bottom: 24px;
+            font-family: 'Inter', sans-serif;
+        }
+        .studio-text p:last-child {
+            margin-bottom: 0;
+        }
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 0;
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #f0e3dc;
+            transition: all 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: #6bafa0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            transition: background 0.2s;
+        }
+        .feature-header h4 {
+            font-size: 15px;
+            font-weight: 400;
+            color: #2C2C2C;
+            flex: 1;
+            line-height: 1.4;
+            font-family: 'Playfair Display', serif;
+        }
+        .feature-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            padding: 0 18px;
+        }
+        .feature-card.open .feature-content {
+            max-height: 200px;
+            padding: 0 18px 16px;
+        }
+        .feature-content p {
+            font-size: 13px;
+            font-weight: 400;
+            color: #8a8179;
+            line-height: 1.6;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 900px) {
+            .info-wrapper {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+        
+        .faq-item {
+            background: #fff;
+            border: 1px solid #eaeef2;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #2C2C2C;
+            background: #ffffff;
+            transition: background 0.2s;
+            font-family: 'Inter', sans-serif;
+            gap: 1rem;
+        }
+        .faq-question:hover {
+            background: #fafafa;
+        }
+        .faq-text {
+            flex: 1;
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.2s ease;
+            background: #ffffff;
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+        }
+        .faq-answer.show {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 2000px;
+        }
+        .note {
+            background: #fef7e0;
+            border-left: 4px solid #378C7F;
+            padding: 0.8rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .faq-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .faq-col {
+            flex: 1 1 45%;
+            min-width: 280px;
+        }
+        .important-faq-list {
+            flex-direction: column;
+            gap: 0;
+        }
+        .faq-answer ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .faq-list {
+                flex-direction: column;
+                gap: 0;
+            }
+            .faq-col {
+                flex: 1 1 100%;
+                min-width: 0;
+            }
+            .note {
+                font-size: 0.85rem;
+                padding: 0.6rem 0.8rem;
+                word-break: break-word;
+            }
+        }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .work-card {
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .work-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .work-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        .discounts-wrapper {
+            background: #F4F9F7;
+            padding: 2rem;
+        }
+        .hit-card {
+            background: white;
+            border: 1px solid #378C7F;
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            min-width: 240px;
+        }
+        .hit-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+        .hit-card p {
+            font-family: 'Inter', sans-serif;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .service-dropdown {
+            position: relative;
+        }
+        .custom-options {
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .custom-options li {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-options li:hover, .custom-options li.active-option {
+            background: #f1f9f7;
+            color: #378C7F;
+        }
+        @media (min-width: 769px) {
+            .custom-options {
+                top: 100%;
+                bottom: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .custom-options {
+                bottom: 100%;
+                top: auto;
+                margin-bottom: 2px;
+            }
+        }
+        .show-options {
+            display: block;
+        }
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        [data-reveal].visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- НАВИГАЦИЯ (фиксированная) -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">HairOff</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="hamburger" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul class="nav-links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#prices">Прайс</a></li>
+            <li><a href="#booking">Запись</a></li>
+            <li><a href="#maps-block">Адреса</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ГЕРОЙ-БЛОК -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>
+                <span class="no-wrap">Лазерная эпиляция без</span>
+                <br>
+                <span class="no-wrap-second">боли и вросших волос</span>
+            </h1>
+            <div class="rating">
+                <span>4.9</span>
+                <span class="stars">★★★★★</span>
+            </div>
+            <div class="subhead">
+                Диодный лазер Profbeauty — <span class="result-highlight">результат с первого сеанса</span><br>
+                Чебоксары и Новочебоксарск
+            </div>
+            <div class="benefits">
+                <div class="benefit-item"><i class="fas fa-percent"></i> Скидка на первый визит</div>
+                <div class="benefit-item"><i class="fas fa-puzzle-piece"></i> Детская игровая зона</div>
+                <div class="benefit-item"><i class="fas fa-hand-holding-heart"></i> Безболезненная процедура</div>
+            </div>
+            <a href="#booking" class="btn-primary">Записаться</a>
+        </div>
+        <div class="hero-image">
+            <div class="image-wrapper">
+                <img src="C:/Users/PC/Desktop/лазернаяэпиляция/ноги-Photoroom.png" alt="Лазерная эпиляция">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ПЛАВАЮЩАЯ КНОПКА ЗАПИСИ -->
+<a href="#booking" class="floating-btn" aria-label="Записаться"><i class="fas fa-calendar-alt"></i></a>
+
+<!-- О СТУДИИ (аккордеон) -->
+<div class="studio-info" id="about">
+    <div class="container">
+        <div class="section-title" data-reveal>
+            О студии <span class="accent-text">HairOff</span>
+        </div>
+        <div class="info-wrapper">
+            <div class="studio-text" data-reveal>
+                <p>HairOff — современная студия эпиляции и косметологии в Новочебоксарске и Чебоксарах. Мы используем диодный лазер, который подходит для любого типа кожи и волос, минимально болезненен и даёт стойкий результат уже после 4-6 сеансов.</p>
+                <p>Наши специалисты регулярно повышают квалификацию, а процедуры проходят в комфортной атмосфере с соблюдением всех стерильных норм. Мы работаем как с женщинами, так и с мужчинами, предлагая индивидуальный подход и программы с экономией до 40%.</p>
+            </div>
+            <div class="features-list" data-reveal>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg></div>
+                        <h4>Диодный лазер Profbeauty</h4>
+                        <div class="feature-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="feature-content"><p>Современное оборудование для эффективной и безопасной эпиляции на любом типе кожи. Быстро, надёжно, без боли.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                        <h4>Индивидуальный подход</h4>
+                        <div class="feature-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="feature-content"><p>Персональные программы, консультация специалиста, подбор параметров лазера под ваш фототип и зону эпиляции.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h4>Стерильность</h4>
+                        <div class="feature-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="feature-content"><p>Одноразовые расходники, стерильные инструменты, обработка всех поверхностей. Ваша безопасность — наш главный приоритет.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="6.5" cy="6.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="17.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                        <h4>Экономия до 40%</h4>
+                        <div class="feature-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="feature-content"><p>Абонементы и пакетные предложения. Запланируйте курс процедур и получите значительную скидку — выгодно и удобно.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- УСЛУГИ -->
+<section id="services">
+    <div class="container">
+        <h2>Наши услуги</h2>
+        <div class="services-grid">
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/lazerapilazia.jpg');"><div class="service-label">Лазерная эпиляция</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/LPGmacah1.jpg');"><div class="service-label">LPG массаж</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/ozon.jpg');"><div class="service-label">Озонотерапия</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/aparatcocmetolog.jpg');"><div class="service-label">Аппаратная косметология</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/zelulitmacah.jpg');"><div class="service-label">Антицеллюлитный массаж</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/limfodrenah.jpg');"><div class="service-label">Лимфодренаж</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/carbokciterapia.jpg');"><div class="service-label">Карбокситерапия</div></div>
+            <div class="service-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/relakcmacahg.jpg');"><div class="service-label">Релаксирующий массаж</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ПРАЙС-ЛИСТ -->
+<section id="prices">
+    <div class="container">
+        <h2>Прайс-лист</h2>
+        <div class="price-tabs">
+            <button class="tab-btn active" data-tab="female">Женский</button>
+            <button class="tab-btn" data-tab="male">Мужской</button>
+            <button class="tab-btn" data-tab="complex">Комплексы</button>
+            <button class="tab-btn" data-tab="lpg">LPG массаж</button>
+            <button class="tab-btn" data-tab="laser_cosmetology">Лазерная косметология</button>
+        </div>
+        <div id="female" class="price-content active"><div class="price-grid-2cols"><div><div class="price-card"><div class="price-category">ЛИЦО</div><div class="price-item"><span>Межбровье</span><span>550 ₽</span></div><div class="price-item"><span>Верхняя губа</span><span>800 ₽</span></div><div class="price-item"><span>Подбородок</span><span>800 ₽</span></div><div class="price-item"><span>Бакенбарды/щеки</span><span>800 ₽</span></div><div class="price-item"><span>Две зоны лица</span><span>1 400 ₽</span></div><div class="price-item"><span>Лицо полностью</span><span>2 000 ₽</span></div></div><div class="price-card"><div class="price-category">БИКИНИ</div><div class="price-item"><span>Бикини классика</span><span>1 350 ₽</span></div><div class="price-item"><span>Бикини среднее</span><span>1 700 ₽</span></div><div class="price-item"><span>Бикини глубокое</span><span>2 100 ₽</span></div></div><div class="price-card"><div class="price-category">РУКИ</div><div class="price-item"><span>Руки до локтя</span><span>1 550 ₽</span></div><div class="price-item"><span>Руки выше локтя</span><span>1 550 ₽</span></div><div class="price-item"><span>Руки полностью</span><span>2 750 ₽</span></div></div></div><div><div class="price-card"><div class="price-category">НОГИ</div><div class="price-item"><span>Колени</span><span>900 ₽</span></div><div class="price-item"><span>Бедро (задняя/передняя часть)</span><span>1 350 ₽</span></div><div class="price-item"><span>Голени</span><span>2 250 ₽</span></div><div class="price-item"><span>Бедра</span><span>2 500 ₽</span></div><div class="price-item"><span>Ноги полностью</span><span>4 150 ₽</span></div></div><div class="price-card"><div class="price-category">ТЕЛО</div><div class="price-item"><span>Линия живота</span><span>650 ₽</span></div><div class="price-item"><span>Ареолы</span><span>800 ₽</span></div><div class="price-item"><span>Шея</span><span>1 100 ₽</span></div><div class="price-item"><span>Подмышки</span><span>1 150 ₽</span></div><div class="price-item"><span>Живот</span><span>1 550 ₽</span></div><div class="price-item"><span>Ягодицы</span><span>1 550 ₽</span></div><div class="price-item"><span>Спина</span><span>2 750 ₽</span></div></div><div class="price-card"><div class="price-category">Абонементы</div><div class="price-item"><em>При покупке абонемента на 4 посещения — скидка 10%, на 6 посещений — скидка 15%</em></div></div></div></div></div>
+        <div id="male" class="price-content"><div class="price-grid-2cols"><div><div class="price-card"><div class="price-category">ЛИЦО (муж)</div><div class="price-item"><span>Межбровье</span><span>650 ₽</span></div><div class="price-item"><span>Верхняя губа</span><span>900 ₽</span></div><div class="price-item"><span>Подбородок</span><span>900 ₽</span></div><div class="price-item"><span>Бакенбарды/щеки</span><span>900 ₽</span></div></div><div class="price-card"><div class="price-category">ТЕЛО (муж)</div><div class="price-item"><span>Шея</span><span>1 250 ₽</span></div><div class="price-item"><span>Подмышки</span><span>1 350 ₽</span></div><div class="price-item"><span>Руки до локтя</span><span>1 750 ₽</span></div><div class="price-item"><span>Живот</span><span>2 000 ₽</span></div><div class="price-item"><span>Ягодицы</span><span>2 000 ₽</span></div><div class="price-item"><span>Голени</span><span>2 400 ₽</span></div><div class="price-item"><span>Бедра</span><span>2 650 ₽</span></div><div class="price-item"><span>Руки полностью</span><span>2 950 ₽</span></div><div class="price-item"><span>Спина</span><span>3 100 ₽</span></div><div class="price-item"><span>Ноги полностью</span><span>4 350 ₽</span></div></div></div><div><div class="price-card"><div class="price-category">БИКИНИ (муж)</div><div class="price-item"><span>Бикини среднее</span><span>2 750 ₽</span></div><div class="price-item"><span>Бикини глубокое</span><span>3 300 ₽</span></div></div><div class="price-card"><div class="price-category">Абонементы (муж)</div><div class="price-item"><em>При покупке абонемента на 4 посещения — скидка 10%, на 6 посещений — скидка 15%</em></div></div><div class="price-card"><div class="price-category">Мужские комплексы</div><div class="price-item"><span>Подмышки + зона на лице</span><span>2 000 ₽</span></div><div class="price-item"><span>Лицо полностью</span><span>2 150 ₽</span></div><div class="price-item"><span>Подмышки + бикини</span><span>4 000 ₽</span></div><div class="price-item"><span>Подмышки + бикини + зона на лице</span><span>4 500 ₽</span></div></div></div></div></div>
+        <div id="complex" class="price-content"><div class="complex-grid"><div><div class="price-card"><div class="price-category">Женские соло-комплексы</div><div class="price-item"><span>Подмышки + зона на лице</span><span>1 750 ₽</span></div><div class="price-item"><span>Подмышки + бикини</span><span>2 900 ₽</span></div><div class="price-item"><span>Подмышки + голени</span><span>3 050 ₽</span></div><div class="price-item"><span>Подмышки + бикини + зона на лице</span><span>3 450 ₽</span></div><div class="price-item"><span>Бикини + голени</span><span>3 900 ₽</span></div><div class="price-item"><span>Подмышки + бикини + голени</span><span>4 750 ₽</span></div><div class="price-item"><span>Подмышки + ноги полностью</span><span>4 750 ₽</span></div><div class="price-item"><span>Бикини + ноги полностью</span><span>5 600 ₽</span></div><div class="price-item"><span>Подмышки + бикини + ноги полностью</span><span>6 350 ₽</span></div><div class="price-item"><span>Подмышки + бикини + ноги полностью + зона на лице</span><span>6 850 ₽</span></div><div class="price-item"><span>Подмышки + бикини + ноги полностью + руки полностью</span><span>7 900 ₽</span></div><div class="price-item"><span>Подмышки + бикини + ноги полностью + руки полностью + лицо</span><span>8 500 ₽</span></div><div class="price-item"><span>Тело полностью (без ограничений)</span><span>10 900 ₽</span></div><div class="price-item" style="color:#378C7F;"><span>Микс комплекс — дополнительная скидка 10%</span><span></span></div><div class="price-item"><em>При покупке абонемента на 4 посещения — скидка 10%, на 6 посещений — скидка 15%</em></div></div></div><div><div class="price-card"><div class="price-category">Мужские комплексы</div><div class="price-item"><span>Подмышки + зона на лице</span><span>2 000 ₽</span></div><div class="price-item"><span>Лицо полностью</span><span>2 150 ₽</span></div><div class="price-item"><span>Подмышки + бикини</span><span>4 000 ₽</span></div><div class="price-item"><span>Подмышки + бикини + зона на лице</span><span>4 500 ₽</span></div><div class="price-item"><span>Спина + плечи</span><span>5 500 ₽</span></div><div class="price-item"><span>Комплекс «Торс» (спина+грудь+живот)</span><span>7 900 ₽</span></div><div class="price-item"><em>При покупке абонемента на 4 посещения — скидка 10%, на 6 посещений — скидка 15%</em></div></div></div></div></div>
+        <div id="lpg" class="price-content"><div class="price-table-wrapper"><table class="price-table"><thead><tr><th>Длительность / Пакет</th><th>1 сеанс</th><th>5 сеансов</th><th>10 сеансов</th><th>15 сеансов</th></tr></thead><tbody><tr><td><strong>LPG-массаж 30 минут</strong></td><td data-label="1 сеанс">1 500 ₽</td><td data-label="5 сеансов">7 000 ₽<br><span style="font-size:0.7rem;">(1 400 ₽/сеанс)</span></td><td data-label="10 сеансов">12 500 ₽<br><span style="font-size:0.7rem;">(1 250 ₽/сеанс)</span></td><td data-label="15 сеансов">16 500 ₽<br><span style="font-size:0.7rem;">(1 100 ₽/сеанс)</span></td></tr>
+                 <tr><td><strong>LPG-массаж 45 минут</strong></td><td data-label="1 сеанс">1 850 ₽</td><td data-label="5 сеансов">8 500 ₽<br><span style="font-size:0.7rem;">(1 700 ₽/сеанс)</span></td><td data-label="10 сеансов">15 500 ₽<br><span style="font-size:0.7rem;">(1 550 ₽/сеанс)</span></td><td data-label="15 сеансов">21 000 ₽<br><span style="font-size:0.7rem;">(1 400 ₽/сеанс)</span></td></tr>
+                </tbody>
+                </table></div><div class="price-card" style="margin-top:1rem;"><div class="price-category">Дополнительно</div><div class="price-item"><span>Костюм для LPG-массажа (одноразовый)</span><span>900 ₽</span></div><div class="price-item"><span>Консультация перед курсом</span><span>Бесплатно</span></div></div></div>
+        <div id="laser_cosmetology" class="price-content"><div class="price-grid-2cols"><div><div class="price-card"><div class="price-category">КОРРЕКЦИЯ АКНЕ / ВОЗРАСТНЫХ ИЗМЕНЕНИЙ ДИОДНЫМ ЛАЗЕРОМ</div><div class="price-item"><span>Процедура диодным лазером</span><span>2 500 ₽</span></div><div class="price-item"><span>Процедура диодным лазером + альгинантная маска</span><span>3 300 ₽</span></div><div class="price-item"><span>Процедура диодным лазером + карбокситерапия</span><span>4 200 ₽</span></div><div class="price-item"><span>Процедура диодным лазером + карбокситерапия + альгинантная маска</span><span>5 000 ₽</span></div><div class="price-item" style="margin-top:0.5rem;"><em>При покупке абонемента на 4 посещения — скидка 10%, на 6 посещений — скидка 15%</em></div></div></div><div><div class="price-card"><div class="price-category">ДИОДНОЕ ОМОЛОЖЕНИЕ (ССС)</div><div class="price-item"><span>Лицо</span><span>2 500 ₽</span></div><div class="price-item"><span>Лицо + шея</span><span>2 900 ₽</span></div><div class="price-item"><span>Лицо + шея + декольте</span><span>3 200 ₽</span></div><div class="price-item"><span>Кисти и пальчики</span><span>1 450 ₽</span></div><div class="price-item" style="margin-top:0.5rem;"><em>При покупке абонемента на 4 посещения — скидка 10%, на 6 посещений — скидка 15%</em></div></div></div></div><div class="price-card" style="background:#F4F9F7;"><div class="price-category">Описание процедур</div><div class="price-item description-item"><span>Коррекция акне/возрастных изменений:</span><span>демакияж, очищение, тонизирование, лазер, тонизирование, сыворотка, крем/СПФ</span></div><div class="price-item description-item"><span>Диодное омоложение:</span><span>эффективное обновление кожи, стимуляция коллагена</span></div></div></div>
+    </div>
+</section>
+
+<!-- АКЦИИ И СКИДКИ -->
+<section>
+    <div class="container">
+        <h2>Акции и скидки</h2>
+        <div class="discounts-wrapper">
+            <div style="text-align:center;">
+                <h3>Хит-комплексы</h3>
+                <div style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin-top:1rem;">
+                    <div class="hit-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/Akchia1.jpg'); background-size: cover; background-position: center; color: white; text-shadow: 0 0 5px black;"><h3>Бикини + Подмышки + Голени</h3><p>Вместо <span class="old-price">4 750 ₽</span></p><p><strong style="font-size:1.5rem;">3 000 ₽</strong></p><a href="#booking" class="btn-primary">Записаться</a></div>
+                    <div class="hit-card" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/Akchia2.jpg'); background-size: cover; background-position: center; color: white; text-shadow: 0 0 5px black;"><h3>Бикини + Подмышки</h3><p>Вместо <span class="old-price">2 900 ₽</span></p><p><strong style="font-size:1.5rem;">2 000 ₽</strong></p><a href="#booking" class="btn-primary">Записаться</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ВАЖНО ЗНАТЬ -->
+<section class="important-info">
+    <div class="container">
+        <h2>Важно знать</h2>
+        <div class="faq-list important-faq-list">
+            <div class="faq-item"><div class="faq-question"><span class="faq-text">Подготовка к лазерной эпиляции</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer"><p><strong>Оптимальная длина волоса 1-2 мм</strong> (рекомендуем за 24 часа до процедуры сбрить полностью волосы). Если волос длинный, он сгорает и процедура теряет эффективность.</p><p>За 7 дней до процедуры не рекомендуется посещать солярий. В жаркую погоду использовать солнцезащитный крем в зонах эпиляции.</p><p>Воздержаться от выщипывания волос, пилингов, скрабов в зоне эпиляции за 7 дней до и после процедуры.</p><p>За месяц до процедуры на лице исключить инъекционные методики, агрессивные чистки и срединные пилинги.</p><p>После процедуры наносить солнцезащитный крем в течение 7 дней.</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span class="faq-text">Противопоказания к лазерной эпиляции</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer"><ul><li>доброкачественные и злокачественные опухоли</li><li>иммунодефицитные состояния</li><li>эпилепсия</li><li>сахарный диабет в стадии декомпенсации</li><li>обширные кожные воспаления</li><li>кардиостимулятор или кохлеарный имплантат</li><li>беременность и лактация</li><li>приём гормональных препаратов или антибиотиков</li><li>приём препарата Роаккутан</li><li>нарушения свёртываемости крови</li><li>острые и хронические заболевания в стадии обострения</li><li>гипертермия</li><li>экзема, псориаз, плоский лишай, склеродермия</li><li>биоревитализация, мезотерапия, ботокс (менее месяца)</li><li>герпес в стадии обострения</li><li>варикозное расширение вен в зоне обработки</li></ul><div class="note"><strong>Важно:</strong> Перед процедурой обязательна консультация мастера.</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- НАША КОМАНДА -->
+<section class="team" id="masters">
+    <div class="container">
+        <div class="section-head" data-reveal>
+            <p class="section-label">Наша команда</p>
+            <h2>Мастера <em>высокого класса</em></h2>
+        </div>
+        <div class="team-grid">
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Анна В..jpg');"></div><div class="master-overlay"><p class="master-bio">Сертифицированный специалист по лазерной эпиляции, дипломированный косметолог.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Анна В.</h4><p class="master-role">Мастер лазерной эпиляции</p><p class="master-exp">Опыт 6 лет</p><div class="master-spec"><span>Лазерная эпиляция</span><span>ELOS</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Екатерина М..jpg');"></div><div class="master-overlay"><p class="master-bio">Специалист по LPG-массажу и аппаратной коррекции фигуры. Более 800 процедур.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Екатерина М.</h4><p class="master-role">Мастер LPG массажа</p><p class="master-exp">Опыт 4 года</p><div class="master-spec"><span>LPG массаж</span><span>Эндосфера</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Мария С..jpg');"></div><div class="master-overlay"><p class="master-bio">Главный специалист по эпиляции. Работает на оборудовании Candela, GentleLase.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Мария С.</h4><p class="master-role">Мастер лазерной эпиляции</p><p class="master-exp">Опыт 5 лет</p><div class="master-spec"><span>Лазерная эпиляция</span><span>Фотоомоложение</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Ольга К..jpg');"></div><div class="master-overlay"><p class="master-bio">Профессиональный уход за лицом, чистки, пилинги. Индивидуальный подход.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Ольга К.</h4><p class="master-role">Косметолог-эстетист</p><p class="master-exp">Опыт 3 года</p><div class="master-spec"><span>Косметология</span><span>Массаж лица</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Дарья П..jpg');"></div><div class="master-overlay"><p class="master-bio">Специализация — мужская эпиляция. Работает с чувствительной кожей без раздражения.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Дарья П.</h4><p class="master-role">Мастер мужской эпиляции</p><p class="master-exp">Опыт 7 лет</p><div class="master-spec"><span>Мужская эпиляция</span><span>Воск/шугаринг</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Татьяна Л..jpg');"></div><div class="master-overlay"><p class="master-bio">LPG-массаж, прессотерапия, моделирование тела. Авторские протоколы.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Татьяна Л.</h4><p class="master-role">Мастер LPG массажа</p><p class="master-exp">Опыт 4 года</p><div class="master-spec"><span>LPG массаж</span><span>Прессотерапия</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Ирина Н..jpg');"></div><div class="master-overlay"><p class="master-bio">Ведущий мастер студии. Тренер по эпиляции. Помогает решать сложные случаи.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Ирина Н.</h4><p class="master-role">Ведущий мастер</p><p class="master-exp">Опыт 8 лет</p><div class="master-spec"><span>Эпиляция</span><span>Обучение</span></div></div></div>
+            <div class="master-card" data-reveal><div class="master-img"><div class="img-placeholder" style="background-image: url('C:/Users/PC/Desktop/лазернаяэпиляция/мастера/Александра Р..jpg');"></div><div class="master-overlay"><p class="master-bio">Биоэпиляция, шугаринг, лазерная эпиляция. Заботливый подход к клиентам.</p><a href="#booking" class="btn-sm">Записаться</a></div></div><div class="master-info"><h4>Александра Р.</h4><p class="master-role">Мастер эпиляции</p><p class="master-exp">Опыт 3 года</p><div class="master-spec"><span>Эпиляция</span><span>Шугаринг</span></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- НАШИ РАБОТЫ -->
+<section id="works">
+    <div class="container">
+        <h2>Наши работы</h2>
+        <div class="works-grid">
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/BIKINI.jpg" alt="Результат бикини"><p>Бикини, 4 сеанса</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/podmichka.jpg" alt="Результат подмышки"><p>Подмышки, 3 сеанса</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/nogi.jpg" alt="Результат голени"><p>Голени, 3 сеанса</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/Brovi.jpg" alt="Результат лицо"><p>Лицо, 4 сеанса</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/zatilok.jpg" alt="Результат затылок"><p>Затылок, 5 сеансов</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/cpina.jpg" alt="Результат спина (муж)"><p>Спина (муж), 5 сеансов</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/podborodok.jpg" alt="Результат подбородок (муж)"><p>Подбородок (муж)</p></div>
+            <div class="work-card"><img src="C:/Users/PC/Desktop/лазернаяэпиляция/radoti/yca.jpg" alt="Результат верхняя губа"><p>Верхняя губа</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section class="reviews-section" id="reviews">
+    <div class="container">
+        <div class="section-head" data-reveal>
+            <p class="section-label">Отзывы</p>
+            <h2>Что говорят<br><em>наши клиенты</em></h2>
+        </div>
+        <div class="reviews-two-columns">
+            <div class="reviews-col">
+                <div class="review-card" data-reveal><div class="review-stars">★★★★★</div><p class="review-text">Добрый вечер! Хочу написать вам слова благодарности! Спасибо большое вам за то, что устраиваете розыгрыши и у всех есть шанс выиграть!) Такой шанс выпал и мне Спасибо вам большое. Я осталась очень довольна!) Буду ещё участвовать и верить в победу 🍫</p><div class="review-author"><div class="review-avatar">Н</div><div><strong>Надежда А.</strong><span>Розыгрыш, эпиляция</span></div></div></div>
+                <div class="review-card" data-reveal><div class="review-stars">★★★★★</div><p class="review-text">Добрый день. Долго не могла поверить, но уже вижу результат! Волосы стали намного тоньше и растут медленнее 🐘 довольна как слон. Можно записаться на следующую процедуру?</p><div class="review-author"><div class="review-avatar">Е</div><div><strong>Елизавета М.</strong><span>Лазерная эпиляция</span></div></div></div>
+            </div>
+            <div class="reviews-col">
+                <div class="review-card" data-reveal><div class="review-stars">★★★★★</div><p class="review-text">Добрый вечер сегодня 9 дней прошло как сделали процедуру, волосы выпадают и растут меньше, что очень здорово! Скоро запишусь на следующую процедуру, ждите!</p><div class="review-author"><div class="review-avatar">С</div><div><strong>Светлана К.</strong><span>Лазерная эпиляция</span></div></div></div>
+                <div class="review-card" data-reveal><div class="review-stars">★★★★★</div><p class="review-text">Очень рекомендую! Стерильная чистота, очень приятная обстановка, внимательная и ооочень вежливая мастер. А цен таких вообще нигде нет!)))</p><div class="review-author"><div class="review-avatar">А</div><div><strong>Алексей П.</strong><span>LPG массаж</span></div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Часто задаваемые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-col">
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Больно ли делать лазерную эпиляцию?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">Диодный лазер имеет систему охлаждения, ощущения — лёгкие покалывания.</div></div>
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Можно ли делать загорелой коже?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">За 7 дней до процедуры загар исключён.</div></div>
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Можно ли делать эпиляцию при беременности и лактации?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">Нет, лазерная эпиляция противопоказана из-за гормональных изменений.</div></div>
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Можно ли делать эпиляцию на лице?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">Да, но противопоказания: герпес, свежий загар, ботокс за месяц.</div></div>
+            </div>
+            <div class="faq-col">
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Сколько нужно процедур?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">6-10 сеансов с интервалом 4-8 недель.</div></div>
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Есть ли противопоказания?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">Да, полный список в блоке "Важно знать".</div></div>
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">Как подготовиться к LPG массажу?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">Пить воду, не есть за 1-2 часа, нужен специальный костюм.</div></div>
+                <div class="faq-item"><div class="faq-question"><span class="faq-text">С какого возраста можно делать лазерную эпиляцию?</span><div class="faq-toggle"><i class="fas fa-chevron-down"></i></div></div><div class="faq-answer">С 18 лет, в исключительных случаях с 16 лет при письменном согласии родителей.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ЗАПИСЬ -->
+<section id="booking">
+    <div class="container">
+        <h2>Запишитесь на процедуру</h2>
+        <div class="work-time-header">Работаем ежедневно с 9:00 – 20:00</div>
+        <div class="booking-wrapper">
+            <div class="booking-grid">
+                <div class="booking-form">
+                    <form id="appointmentForm">
+                        <div class="form-row"><label for="clientName">Ваше имя</label><input type="text" id="clientName" placeholder="Иван Иванов" required></div>
+                        <div class="form-row"><label for="clientPhone">Телефон</label><input type="tel" id="clientPhone" placeholder="+7 (___) ___-__-__" required></div>
+                        <div class="form-row"><label for="serviceInput">Выберите услугу</label><div class="service-dropdown"><input type="text" id="serviceInput" placeholder="Выберите услугу" autocomplete="off" oninput="filterServices()" onfocus="filterServices()" /><ul class="custom-options" id="serviceDropdown"></ul></div></div>
+                        <div class="form-row"><label for="branchSelect">Филиал</label><select id="branchSelect"><option value="Новочебоксарск">Новочебоксарск, ул. Винокурова, 48</option><option value="Чебоксары">Чебоксары, ул. Композиторов Воробьёвых, 20</option></select></div>
+                        <div class="datetime-row"><div class="form-row"><label for="datePicker">Дата</label><input type="text" id="datePicker" placeholder="Укажите дату" class="flatpickr-input" readonly></div><div class="form-row"><label for="timePicker">Время</label><input type="text" id="timePicker" placeholder="Укажите время" class="flatpickr-input" readonly></div></div>
+                        <div class="form-row"><label for="masterSelect">Предпочитаемый мастер</label>
+                            <select id="masterSelect">
+                                <option value="" disabled selected>Выбрать специалиста</option>
+                                <option value="Любой">Любой специалист</option>
+                                <option value="Анна В.">Анна В. (лазерная эпиляция, 6 лет)</option>
+                                <option value="Екатерина М.">Екатерина М. (LPG массаж, 4 года)</option>
+                                <option value="Мария С.">Мария С. (лазерная эпиляция, 5 лет)</option>
+                                <option value="Ольга К.">Ольга К. (косметология, 3 года)</option>
+                                <option value="Дарья П.">Дарья П. (мужская эпиляция, 7 лет)</option>
+                                <option value="Татьяна Л.">Татьяна Л. (LPG массаж, 4 года)</option>
+                                <option value="Ирина Н.">Ирина Н. (ведущий мастер, 8 лет)</option>
+                                <option value="Александра Р.">Александра Р. (эпиляция, 3 года)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width:100%;">Записаться</button>
+                    </form>
+                </div>
+                <div class="contacts-card"><h3>Контакты</h3><div class="contact-detail"><i class="fas fa-clock"></i> Работаем ежедневно с 9:00 – 20:00</div><div class="contact-detail"><i class="fas fa-phone-alt"></i> +7‒917‒666‒58‒00</div><div class="social-links"><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a><a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a></div><div class="contact-detail"><i class="fas fa-map-marker-alt"></i> Чебоксары, Новочебоксарск</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- КАРТЫ -->
+<section id="maps-block">
+    <div class="container">
+        <h2>Наши студии на карте</h2>
+        <div class="two-maps-container">
+            <div class="map-card"><h3>Новочебоксарск</h3><div id="mapNovocheboksarsk" class="map-wrapper"></div><div class="map-address">ул. Винокурова, 48, оф.522/523</div></div>
+            <div class="map-card"><h3>Чебоксары</h3><div id="mapCheboksary" class="map-wrapper"></div><div class="map-address">ул. Композиторов Воробьёвых, 20</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ФУТЕР -->
+<footer class="new-footer">
+    <div class="footer-content">
+        <div class="footer-logo">HairOff</div>
+        <div class="footer-desc">Студия лазерной эпиляции и LPG массажа | Чебоксары, Новочебоксарск</div>
+        <div class="footer-nav">
+            <a href="#about">О нас</a>
+            <a href="#services">Услуги</a>
+            <a href="#prices">Прайс</a>
+            <a href="#booking">Запись</a>
+            <a href="#maps-block">Адреса</a>
+        </div>
+        <div class="footer-copyright">© 2026 HairOff. Все права защищены.</div>
+    </div>
+</footer>
+
+<script>
+    // Скрипт для изменения фона навбара при скролле
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Бургер-меню
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    if (navToggle) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 800) {
+                    navToggle.checked = false;
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 800 && navToggle.checked) {
+                navToggle.checked = false;
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Табы прайс-листа
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.price-content');
+    tabs.forEach(btn => { btn.addEventListener('click', () => { tabs.forEach(b => b.classList.remove('active')); btn.classList.add('active'); contents.forEach(c => c.classList.remove('active')); document.getElementById(btn.dataset.tab).classList.add('active'); }); });
+    
+    // Flatpickr
+    flatpickr("#datePicker", { locale: "ru", minDate: new Date().fp_incr(1), dateFormat: "d.m.Y" });
+    flatpickr("#timePicker", { enableTime: true, noCalendar: true, dateFormat: "H:i", minuteIncrement: 60 });
+
+    // Список услуг для формы
+    const servicesList = [
+        "Лазерная эпиляция (женская)", "Лазерная эпиляция (мужская)", "LPG массаж 30 минут", "LPG массаж 45 минут",
+        "Озонотерапия", "Аппаратная косметология", "Антицеллюлитный массаж", "Лимфодренаж",
+        "Карбокситерапия", "Релаксирующий массаж", "Межбровье (лазер)", "Верхняя губа (лазер)",
+        "Подбородок (лазер)", "Бакенбарды/щеки (лазер)", "Две зоны лица (лазер)", "Лицо полностью (лазер)",
+        "Бикини классика (лазер)", "Бикини среднее (лазер)", "Бикини глубокое (лазер)", "Руки до локтя (лазер)",
+        "Руки выше локтя (лазер)", "Руки полностью (лазер)", "Колени (лазер)", "Бедро задняя/передняя часть (лазер)",
+        "Голени (лазер)", "Бедра (лазер)", "Ноги полностью (лазер)", "Линия живота (лазер)", "Ареолы (лазер)",
+        "Шея (лазер)", "Подмышки (лазер)", "Живот (лазер)", "Ягодицы (лазер)", "Спина (лазер)"
+    ];
+    const serviceInput = document.getElementById('serviceInput');
+    const dropdown = document.getElementById('serviceDropdown');
+    function filterServices() { 
+        const filter = serviceInput.value.toLowerCase(); 
+        dropdown.innerHTML = ''; 
+        const filtered = filter === '' ? servicesList : servicesList.filter(s => s.toLowerCase().includes(filter)); 
+        if (filtered.length > 0) { 
+            filtered.forEach(s => { 
+                const li = document.createElement('li'); 
+                li.textContent = s; 
+                li.addEventListener('mousedown', (e) => { 
+                    serviceInput.value = s; 
+                    dropdown.classList.remove('show-options'); 
+                }); 
+                dropdown.appendChild(li); 
+            }); 
+            dropdown.classList.add('show-options'); 
+        } else { 
+            dropdown.classList.remove('show-options'); 
+        } 
+    }
+    document.addEventListener('click', (e) => { 
+        if (!e.target.closest('.service-dropdown')) { 
+            dropdown.classList.remove('show-options'); 
+        } 
+    });
+    
+    document.getElementById('appointmentForm').addEventListener('submit', (e) => { 
+        e.preventDefault(); 
+        const name = document.getElementById('clientName').value; 
+        const phone = document.getElementById('clientPhone').value; 
+        const service = document.getElementById('serviceInput').value; 
+        const branch = document.getElementById('branchSelect').value; 
+        const date = document.getElementById('datePicker').value; 
+        const time = document.getElementById('timePicker').value; 
+        const master = document.getElementById('masterSelect').value; 
+        alert(`✅ Заявка отправлена!\nИмя: ${name}\nТелефон: ${phone}\nУслуга: ${service}\nФилиал: ${branch}\nДата: ${date} ${time}\nМастер: ${master}\n\nСкоро мы свяжемся с вами для подтверждения.`); 
+    });
+    
+    // Яндекс карты
+    ymaps.ready(() => { 
+        new ymaps.Map("mapNovocheboksarsk", { center: [56.1181, 47.4828], zoom: 16, controls: ['zoomControl'] }).geoObjects.add(new ymaps.Placemark([56.1181, 47.4828], { balloonContent: "HairOff Новочебоксарск" })); 
+        new ymaps.Map("mapCheboksary", { center: [56.1424, 47.2376], zoom: 16, controls: ['zoomControl'] }).geoObjects.add(new ymaps.Placemark([56.1424, 47.2376], { balloonContent: "HairOff Чебоксары" })); 
+    });
+    
+    // Анимации появления
+    const fades = document.querySelectorAll('.fade-up'); 
+    const obs = new IntersectionObserver(e => e.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }), { threshold: 0.1 }); 
+    fades.forEach(el => obs.observe(el));
+    
+    // Аккордеоны для FAQ и feature-карточек
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-toggle i');
+        const toggle = () => {
+            item.classList.toggle('open');
+            answer.classList.toggle('show');
+            if (icon) {
+                if (item.classList.contains('open')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            }
+        };
+        if (question) question.addEventListener('click', toggle);
+    });
+    
+    document.querySelectorAll('.feature-card').forEach(card => {
+        const header = card.querySelector('.feature-header');
+        const icon = card.querySelector('.feature-toggle i');
+        const toggle = () => {
+            card.classList.toggle('open');
+            if (icon) {
+                if (card.classList.contains('open')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            }
+        };
+        if (header) header.addEventListener('click', (e) => { if (!e.target.closest('.feature-toggle')) toggle(); });
+        const btn = card.querySelector('.feature-toggle');
+        if (btn) btn.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+    });
+    
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+    revealItems.forEach(el => revealObserver.observe(el));
+    
+    const masterBtns = document.querySelectorAll('.btn-sm');
+    masterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (btn.getAttribute('href') === '#booking') {
+                e.preventDefault();
+                alert('Форма записи к мастеру. В ближайшее время мы свяжемся с вами для подтверждения.');
+            }
+        });
+    });
+</script>
+</body>
+</html>
